@@ -5,21 +5,21 @@
 class CachegrandServerlessCli < Formula
   desc "cachegrand serverless cli"
   homepage "https://github.com/cachegrand/cachegrand-serverless-cli"
-  version "1.0.0-alpha10"
+  version "1.0.0-alpha.11"
   license "MIT"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha10/cachegrand-serverless-cli_1.0.0-alpha10_macOS_x86_64.zip"
-      sha256 "db0d8365256797efbf5d0b2cff5dc55da8211599b56da70c569f5a383e5b18aa"
+    if Hardware::CPU.arm?
+      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha.11/cachegrand-serverless-cli_1.0.0-alpha.11_macOS_arm64.zip"
+      sha256 "a0230b253b31da86d2e7205a8ae61908742fd49db1d986f2819ba791de032f27"
 
       def install
         bin.install "cg-cli"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha10/cachegrand-serverless-cli_1.0.0-alpha10_macOS_arm64.zip"
-      sha256 "18c99d1dd11e8a1ebb57423c620aab42dabe6a2eeb75ead8785af257ead41cd3"
+    if Hardware::CPU.intel?
+      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha.11/cachegrand-serverless-cli_1.0.0-alpha.11_macOS_x86_64.zip"
+      sha256 "7a2babcb4089ee7b3f2f69d8d97a30045ff3032148dc83e790a3ca4e643b6370"
 
       def install
         bin.install "cg-cli"
@@ -28,25 +28,25 @@ class CachegrandServerlessCli < Formula
   end
 
   on_linux do
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha.11/cachegrand-serverless-cli_1.0.0-alpha.11_linux_arm64.tar.gz"
+      sha256 "512c255cbb46aaa51ac36d04f08e15f5bcbecbcc1014a548d372df3967e164e5"
+
+      def install
+        bin.install "cg-cli"
+      end
+    end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha10/cachegrand-serverless-cli_1.0.0-alpha10_linux_armv6.tar.gz"
-      sha256 "3dd98f47da84f519fc5b2a462bafb6ea6ee39855bbfff8d760c6b1642e1dcf10"
+      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha.11/cachegrand-serverless-cli_1.0.0-alpha.11_linux_armv6.tar.gz"
+      sha256 "27a167ddb218274e6f4ee5f2a6b192e2d289d3295140769147f1693fd974c32a"
 
       def install
         bin.install "cg-cli"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha10/cachegrand-serverless-cli_1.0.0-alpha10_linux_x86_64.tar.gz"
-      sha256 "451b3430b0ecfa94f48196c597ff76f340cb62d9dd20b4df0a619485a0da6992"
-
-      def install
-        bin.install "cg-cli"
-      end
-    end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha10/cachegrand-serverless-cli_1.0.0-alpha10_linux_arm64.tar.gz"
-      sha256 "340cd45d172a1d85c38df57938da5d35304d4907cafd033aefb2d83e8c2e407d"
+      url "https://github.com/cachegrand/cachegrand-serverless-cli/releases/download/v1.0.0-alpha.11/cachegrand-serverless-cli_1.0.0-alpha.11_linux_x86_64.tar.gz"
+      sha256 "456445570b0f01b9f8ec5d30917cea7d9b881fd3a8dc776c244fee3ac39bdb2c"
 
       def install
         bin.install "cg-cli"
